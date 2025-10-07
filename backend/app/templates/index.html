@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Simulador de Procesos</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/styles.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="elementos-head">
+      <h1>Simulador de Procesos - Sistema Operativo</h1>
+      <p>Política actual: {{elemento}}</p>
+      {% for i in procesos %}
+      <p>{{i}} procesos activos</p>
+      {% endfor %}
+    </div>
+    <div class="elementos-centro">
+      <div class="tabla">
+        <table>
+          <thead>
+            <tr>
+              <th>PID</th>
+              <th>Programa</th>
+              <th>Estado</th>
+              <th>Prioridad</th>
+              <th>Quantum</th>
+              <th>Tiempo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for p in procesos %}
+            <tr>
+              <td>{{ p.pid }}</td>
+              <td>{{ p.programa }}</td>
+              <td>{{ p.estado }}</td>
+              <td>{{ p.prioridad }}</td>
+              <td>{{ p.quantum }} ms</td>
+              <td>{{ p.tiempo }} ms</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <script src="{{ url_for('static', path='js/scripts.js') }}"></script>
+      </div>
+    </div>
+    <div class="elementos-footer">
+    </div>
+  </div>
+  
+</body>
+</html>
